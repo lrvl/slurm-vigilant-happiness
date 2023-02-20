@@ -12,7 +12,7 @@ cat <<EOF
    margin: 20px auto;
    max-width: 900px;
    border-radius: 20px;
-   background: #ddd;
+   background: #f0f4ff; 
    padding: 10px;
 }
 .col {
@@ -23,7 +23,7 @@ body {
   height: 100%;
   margin: 0;
   background-repeat: no-repeat;
-  background-image: linear-gradient(#FFFFFF, #080c80);
+  background-image: linear-gradient(#080c80,#FFFFFF);
 }
 pre  { color: #080c80; }
 </style>
