@@ -1,4 +1,5 @@
 #!/bin/bash
+# Requires -> https://github.com/fasrc/slurm_showq
 echo -n > index.html
 {
 cat <<EOF
