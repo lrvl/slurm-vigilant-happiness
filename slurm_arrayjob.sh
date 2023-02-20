@@ -4,8 +4,10 @@
 #SBATCH --output=log/array_%A-%a.log    # Standard output and error log
 #SBATCH --array=1-20%4                  # Array range
 
-srun -n 1 -c 1 stress -c 1 -t 10
+low=5     # Least nr of seconds
+high=10   # Most  nr of seconds
+srun -n 1 -c 1 stress -c 1 -t $((low + RANDOM%(1+high-low)))
 wait
 
-# Run after mkdir log
-# Purpose: Create 20 jobs and execute 4 at most in parallel
+# All is good
+exit 0
