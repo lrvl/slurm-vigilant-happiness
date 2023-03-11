@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slurm overview</title>
+  <style>
+    body {
+        background-color: #080c80;
+        color: #2a2e3d;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
+    }
+    #output-container {
+        background-color: #ffffff;
+        border: 2px solid #00ccff;
+        border-radius: 5px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        margin: 50px auto;
+        max-width: 90%;
+        padding: 20px;
+        position: relative;
+    }
+    #output-container:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -12px;
+        left: -12px;
+        width: 90px;
+        height: 90px;
+        border-top: 1px solid #00ccff;
+        border-left: 1px solid #00ccff;
+        border-radius: 0 0 0 10px;
+    }
+    #output-container:after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -12px;
+      right: -12px;
+      width: 90px;
+      height: 90px;
+      border-bottom: 1px solid #4d4dff;
+      border-right: 1px solid #4d4dff;
+    }
+    .command {
+      color: #4d4dff;
+    }
+    .output {
+      color: #d9d9d9;
+    }
+  </style>
+</head>
+<body>
+  <div id="output-container">
+    <?php include 'get_output.php'; ?>
+  </div>
+  <script>
+    var currentOutput = document.getElementById("output-container");
+
+    function updateOutput() {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var newOutputContainer = document.createElement("div");
+          newOutputContainer.innerHTML = this.responseText;
+          newOutputContainer.id = "output-container";
+          document.body.appendChild(newOutputContainer);
+
+          // Remove old output from buffer and update currentOutput
+          document.body.removeChild(currentOutput);
+          currentOutput = newOutputContainer;
+        }
+      };
+      xmlhttp.open("GET", "get_output.php", true);
+      xmlhttp.send();
+    }
+    setInterval(updateOutput, 500);
+  </script>
+</body>
+</html>
