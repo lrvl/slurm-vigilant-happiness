@@ -4,8 +4,11 @@
   <title>Slurm overview</title>
   <style>
     body {
-        background-color: #080c80;
-        color: #2a2e3d;
+        overflow: hidden;
+        padding: min(85%, 9em) 0;
+        background: linear-gradient(to top, #080c80, #f0f4ff);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         font-family: 'Montserrat', sans-serif;
         font-size: 18px;
         line-height: 1.5;
@@ -28,7 +31,7 @@
         position: absolute;
         top: -12px;
         left: -12px;
-        width: 90px;
+        width: 200px;
         height: 90px;
         border-top: 1px solid #00ccff;
         border-left: 1px solid #00ccff;
@@ -40,7 +43,7 @@
       position: absolute;
       bottom: -12px;
       right: -12px;
-      width: 90px;
+      width: 200px;
       height: 90px;
       border-bottom: 1px solid #4d4dff;
       border-right: 1px solid #4d4dff;
@@ -77,7 +80,7 @@
       xmlhttp.open("GET", "get_output.php", true);
       xmlhttp.send();
     }
-    setInterval(updateOutput, 500);
+    setInterval(updateOutput, 1000);
   </script>
 </body>
 </html>
