@@ -10,4 +10,4 @@ function updateOutput() {
   xhr.send();
 }
 
-setInterval(updateOutput, 3000);
+setInterval(updateOutput, 1000);
